@@ -5,16 +5,38 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <?php if (basename($_SERVER['REQUEST_URI']) == 'data-profile.php' || basename($_SERVER['REQUEST_URI']) == 'data-posts.php') : ?>
-                <ul class="navbar-nav ms-auto ">
+            <?php if (basename($_SERVER['REQUEST_URI']) == 'create.php' || isset($_GET['id']) == 'edit.php'): ?>
+                <a class="navbar-brand ms-auto text-light"> <?= $titleForm ?> </a>
+            <?php else : ?>
+                <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link <?= (basename($_SERVER['PHP_SELF']) == 'dashborad.php') ? 'text-light' : " " ?>" aria-current="page" href="#">Dashboard</a>
+                        <a class="nav-link <?= (basename($_SERVER['PHP_SELF']) == 'dashboard.php') ? 'text-light' : " " ?>" aria-current="page" href="./dashboard.php">Dashboard</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link <?= (basename($_SERVER['PHP_SELF']) == 'data-profile.php') ? 'text-light' : " " ?>" aria-current="page" href="./data-profile.php">Profile</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link <?= (basename($_SERVER['PHP_SELF']) == 'data-posts.php') ? 'text-light' : " " ?>" href="./data-posts.php">Posts</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <?php $option = ['data-address.php', 'data-media.php'] ?>
+                        <?php if(basename($_SERVER['REQUEST_URI']) == 'data-media.php') : ?>
+                            <a class="nav-link dropdown-toggle  <?= (basename($_SERVER['PHP_SELF']) == $option[1] ) ? 'text-light' : '' ?>" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Info
+                            </a>
+                        <?php else: ?>
+                            <a class="nav-link dropdown-toggle  <?= (basename($_SERVER['PHP_SELF']) == $option[0] ) ? 'text-light' : '' ?>" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Info
+                            </a>
+                        <?php endif ?>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="data-address.php">Address</a></li>
+                            <li><a class="dropdown-item" href="data-media.php">Media & Contact</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="../index.php">Keluar</a></li>
+                        </ul>
                     </li>
                 </ul>
             <?php endif ?>

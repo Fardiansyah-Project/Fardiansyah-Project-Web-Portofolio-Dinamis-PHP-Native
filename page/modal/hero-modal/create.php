@@ -1,9 +1,9 @@
 <?php include '../../layout/head.php' ?>
 <body>
+    <?php $titleForm = "Tambah Data"; ?>
     <?php include '../../layout/navbar.php' ?>
     <?php 
         include '../../../src/connetion/connection.php';  
-        $titleForm = "Tambah Data";
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $name = $_POST['name'];
             $role = $_POST['role'];

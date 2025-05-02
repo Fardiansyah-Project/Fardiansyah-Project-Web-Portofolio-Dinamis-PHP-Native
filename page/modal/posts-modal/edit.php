@@ -1,10 +1,11 @@
 <?php include '../../layout/head.php' ?>
 <body>
-    <?php include '../../../src/connetion/connection.php' ?>
-    <?php include '../../layout/navbar.php' ?>
+    <?php include '../../../src/connetion/connection.php';
+    $titleForm = "Edit Data";
+    ?>
+    <?php include '../../layout/navbar.php'?>
 
     <?php
-    $titleForm = "Edit Data";
     if (isset($_GET['id'])) {
         $id = $_GET['id'];
         $query = "SELECT * FROM post WHERE id='$id'";

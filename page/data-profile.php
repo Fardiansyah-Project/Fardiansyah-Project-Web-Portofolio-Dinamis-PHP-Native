@@ -4,14 +4,17 @@
     $query = "SELECT * FROM hero";
     $result = mysqli_query($connect, $query);
     $data = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    $dataTitle = "Data Profil";
 ?>
 <body>
     <?php include 'layout/navbar.php' ?>
     <?php include 'config/script.php' ?>
     <div class="container mt-5 pt-5" style="height: 400px;">
-        <h1 class="text-center mb-3 fs-2">Data Profil</h1>
         <?php if (empty($data)) : ?>
+            <h1 class="text-center mb-3 fs-2"><?= $dataTitle ?></h1>
             <a href="modal/hero-modal/create.php" class="btn btn-primary mb-3">Tambah Data</a>
+        <?php else : ?>
+            <h1 class="text-center mb-5 fs-2"><?= $dataTitle ?></h1>
         <?php endif ?>
         <div class="table-responsive">
             <table class="table table-bordered table-striped">
