@@ -1,28 +1,7 @@
-<?php include '../../../src/connetion/connection.php' ?>
-<?php
-    $titleForm = "Edit Data";
-    if(isset($_GET['id'])){
-        $id = $_GET['id'];
-        $sql = "SELECT * FROM `about` WHERE id = '$id'";
-        $result = $connect->query($sql);
-        $about = $result->fetch_assoc();
-    }
-?>
-<?php
-    if($_SERVER['REQUEST_METHOD'] == "POST") {
-        $title = $_POST['title'];
-        $desc = $_POST['desc'];
-        $sql= "UPDATE `about` SET title = '$title', `desc` = '$desc' WHERE id = '$id'";
-        $result = $connect->query($sql);
-
-        if($result) {
-            echo "<script>alert('Data berhasil diedit!'); window.location.href = '../../data-about.php'</script>";
-        } else {
-            die("Error: " . mysqli_error($connect));
-        }
-    }
-?>
 <?php include '../../layout/head.php' ?>
+<?php include '../../../src/connetion/connection.php' ?>
+<?php include '../../controller/about-controller/edit.php' ?>
+<?php $titleForm = "Edit Data" ?>
 <body>
     <?php include '../../layout/navbar.php' ?>
     <div class="container py-5">

@@ -1,12 +1,3 @@
-<?php
+<?php include '../../../src/connetion/connection.php'?>
+<?php include '../../controller/about-controller/delete.php' ?>
 
-include '../../../src/connetion/connection.php';
-$id = $_GET['id'];
-$sql = "DELETE FROM `about` WHERE id = '$id'";
-$result = $connect->query($sql);
-
-if($result) {
-    echo "<script>alert('Data berhasil dihapus!'); window.location.href = '../../data-about.php'</script>";
-} else {
-    die("Error: " . mysqli_error($connect));
-}

@@ -1,23 +1,7 @@
-<?php
-include '../../../src/connetion/connection.php';
-$titleForm = "Tambah Data";
-if ($_SERVER['REQUEST_METHOD'] == "POST") {
-    $street = $_POST['street'];
-    $city = $_POST['city'];
-    $province = $_POST['province'];
-    $sql = "INSERT INTO address (street, city, province) VALUES ('$street', '$city', '$province')";
-    $result = $connect->query($sql);
-
-    if ($result) {
-        echo "<script>alert('Data berhasil ditambahkan!'); window.location.href = '../../data-address.php'</script>";
-    } else {
-        die("Error: " . mysqli_error($connect));
-    }
-}
-?>
-
 <?php include '../../layout/head.php' ?>
-
+<?php include '../../../src/connetion/connection.php'?>
+<?php include '../../controller/address-controller/create.php' ?>
+<?php $titleForm = "Tambah Data"; ?>
 <body>
     <?php include '../../layout/navbar.php' ?>
     <div class="container py-5">

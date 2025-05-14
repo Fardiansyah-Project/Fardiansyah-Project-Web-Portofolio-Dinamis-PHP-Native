@@ -1,22 +1,7 @@
 <?php include '../../../src/connetion/connection.php' ?>
 <?php include '../../layout/head.php' ?>
-<?php 
-    $titleForm = "Tambah Data";
-    if($_SERVER['REQUEST_METHOD'] == "POST") {
-        $fb = $_POST['facebook'];
-        $insta = $_POST['instagram'];
-        $github = $_POST['github'];
-        $email = $_POST['email'];
-        $sql = "INSERT INTO `media` (facebook, instagram, github, email) VALUES ('$fb', '$insta', '$github', '$email')";
-        $result = $connect->query($sql);
-
-        if ($result) {
-            echo "<script>alert('Data berhasil ditambahkan!'); window.location.href = '../../data-media.php'</script>";
-        } else {
-            die("Error: " . mysqli_error($connect));
-        }
-    }
-?>
+<?php include '../../controller/media-controller/create.php' ?>
+<?php $titleForm = "Tambah Data" ?>
 <body>
 <?php include '../../layout/navbar.php' ?>
     <div class="container py-5">

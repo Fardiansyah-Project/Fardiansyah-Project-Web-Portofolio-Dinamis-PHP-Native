@@ -5,6 +5,13 @@
     $data = mysqli_fetch_all($result, MYSQLI_ASSOC);
     $dataTitle = "Data Alamat";
 ?>
+
+
+
+
+
+
+
 <?php include 'layout/head.php'?>
 <body>
     <?php include 'layout/navbar.php' ?>

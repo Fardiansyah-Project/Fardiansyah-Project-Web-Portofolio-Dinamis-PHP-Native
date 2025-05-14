@@ -1,7 +1,6 @@
 <?php include 'layout/head.php' ?>
 <?php include '../src/connetion/connection.php' ?>
 <?php
-    $no = 1;
     $sql = "SELECT * FROM `about`";
     $result = $connect->query($sql);
     $about = $result->fetch_all(MYSQLI_ASSOC);
@@ -11,7 +10,7 @@
 <body>
     <?php include 'layout/navbar.php' ?>
     <div class="container mt-5 pt-5" style="height: 400px;">
-        <?php if (count($about) < 2) : ?>
+        <?php if (empty($about)) : ?>
             <h1 class="text-center mb-3 fs-2"><?= $dataTitle ?></h1>
             <a href="modal/about-modal/create.php" class="btn btn-primary mb-3">Tambah Data</a>
         <?php else : ?>
@@ -21,7 +20,6 @@
             <table class="table table-bordered table-striped">
                 <thead class="border-1 rounded-top">
                     <tr>
-                        <th>No</th>
                         <th>Deskripsi</th>
                         <th>Aksi</th>
                     </tr>
@@ -31,7 +29,6 @@
                     for ($i = 0; $i < count($about); $i++) :
                     ?>
                         <tr>
-                            <td><?= $no++ ?></td>
                             <td><?= $about[$i]['title'] ?></td>
                             <td><?= $about[$i]['desc'] ?></td>
                             <td class="col-md-2 text-center">
